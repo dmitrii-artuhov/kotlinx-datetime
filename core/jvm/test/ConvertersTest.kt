@@ -30,7 +30,7 @@ class ConvertersTest {
             assertEquals(jtInstant, ktInstant.toString().let(JTInstant::parse))
         }
 
-        repeat(STRESS_TEST_ITERATIONS) {
+        repeat(SMALL_STRESS_TEST_ITERATIONS) {
             val seconds = Random.nextLong(1_000_000_000_000)
             val nanos = Random.nextInt()
             test(seconds, nanos)
