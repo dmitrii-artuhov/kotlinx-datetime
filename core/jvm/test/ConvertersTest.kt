@@ -5,6 +5,7 @@
 package kotlinx.datetime.test
 
 import kotlinx.datetime.*
+import java.lang.management.ManagementFactory
 import kotlin.random.Random
 import kotlin.test.*
 import java.time.Instant as JTInstant
@@ -19,6 +20,9 @@ class ConvertersTest {
 
     @Test
     fun instant() {
+        val args = ManagementFactory.getRuntimeMXBean().inputArguments
+        println("Args: ${args.joinToString("\n", "\n").substring(10)}")
+
         fun test(seconds: Long, nanosecond: Int) {
             val ktInstant = Instant.fromEpochSeconds(seconds, nanosecond.toLong())
             val jtInstant = JTInstant.ofEpochSecond(seconds, nanosecond.toLong())
